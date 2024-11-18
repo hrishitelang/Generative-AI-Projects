@@ -1,80 +1,90 @@
-# Document Q&A Chatbot with Google Gamma Model and Groq API
+# Chat with Multiple PDFs Using Google Gemini and LangChain
 
-## Problem Statement
-
-The challenge was to create a scalable, efficient, and accurate system for querying large documents, extracting relevant information in real-time. Many existing solutions suffer from slow inferencing speeds and struggle with large datasets.
-
----
-
-## Project Description
-
-This project involved designing and implementing an end-to-end Document Q&A chatbot using Google’s open-source **Gamma model** and the **Groq API**. The chatbot processes large documents, extracts relevant content, and provides fast, accurate answers to user queries, showcasing cutting-edge performance in generative AI applications.
+## **Problem Statement**
+With the increasing demand for analyzing and interacting with information in multiple PDF documents, there is a need for an intelligent system to provide instant answers to user queries about the content within these documents. This project demonstrates how to create an **end-to-end application** that allows users to upload multiple PDFs, process them into vector embeddings, and interact with the content using **Google Gemini Pro** and **LangChain**.
 
 ---
 
-## Methodology and Steps
-
-### 1. **Problem Understanding and Planning**
-   - Identify the need for a document-based Q&A system.
-   - Research suitable models and inferencing engines for optimal performance.
-
-### 2. **Model and Engine Selection**
-   - Chose Google’s **Gamma model** for its lightweight, state-of-the-art capabilities.
-   - Integrated the **Groq API** with the **LPU inferencing engine** for ultra-fast processing.
-
-### 3. **Development Workflow**
-   - Designed a Streamlit-based frontend for user interaction.
-   - Built backend processes for document ingestion, chunking, and embedding generation using **LangChain** and **Google Generative AI embeddings**.
-
-### 4. **System Features**
-   - Real-time document embedding with recursive text splitting for optimized vector generation.
-   - High-speed question answering powered by Groq’s LPU engine.
-   - Context-aware responses enhanced by vector stores and similarity search.
+## **Features**
+1. Upload and process multiple PDFs into vector embeddings.
+2. Use **vector search** to retrieve context-relevant answers to user queries.
+3. Handle PDF documents up to 200 MB each.
+4. Enable modular development with a clear separation of backend processing and frontend interaction using **Streamlit**.
 
 ---
 
-## Tools and Technologies
-
-- **Models**: Google Gamma, Groq API
-- **Frameworks**: LangChain, Streamlit
-- **Libraries**: PyPDF2, Python-dotenv
-- **Vector Stores**: FAISS
-- **Embedding Techniques**: Google Generative AI embeddings
-- **Development Environment**: Python (v3.12), Conda for virtual environments
-
----
-
-## Challenges Faced
-
-- **Complexity in Model Integration**: Understanding and configuring Gamma model variants for specific tasks required extensive experimentation.
-- **Inferencing Speed Optimization**: Leveraging the Groq API and LPU engine required careful API integration and configuration to achieve the claimed high-speed inferencing.
-- **Scalability**: Handling large document datasets efficiently with minimal performance degradation.
-- **Environment Setup**: Setting up API keys, managing environment variables, and ensuring compatibility across multiple libraries.
+## **Tools and Technologies**
+- **Google Gemini Pro**: Generative AI for text embeddings and chat functionalities.
+- **LangChain**: Framework for integrating embeddings, question answering, and chain-based interactions.
+- **Streamlit**: For creating a user-friendly frontend interface.
+- **PyPDF2**: For reading and extracting text from PDF files.
+- **FAISS (Facebook AI Similarity Search)**: For efficient vector storage and similarity search.
+- **Python-dotenv**: For managing API keys and environment variables.
 
 ---
 
-## Outcome
+## **Workflow**
+### **1. PDF Processing**
+- **Upload PDFs**: Users upload one or more PDF documents.
+- **Extract Text**: PDFs are read page by page using **PyPDF2**, and text is extracted.
+- **Split Text**: Extracted text is divided into chunks using LangChain's recursive text splitter.
 
-- Successfully developed a high-performance Document Q&A chatbot capable of real-time responses.
-- Achieved fast inferencing speeds (up to 788 tokens/second) using Groq’s LPU engine.
-- Streamlined document ingestion, embedding, and retrieval, providing accurate and context-aware answers.
-- Enhanced scalability and accessibility by integrating Google Gamma and Groq APIs.
+### **2. Vector Embedding**
+- **Embedding Creation**: Text chunks are converted into embeddings using **Google Generative AI Embedding**.
+- **Vector Store**: Embeddings are saved locally as a vector index using FAISS.
+
+### **3. Conversational Chain**
+- **Prompt Template**: A custom template ensures relevant and detailed responses to user questions.
+- **Query Processing**: The user's question is matched with the most relevant vectors from the index to retrieve context.
+- **Answer Generation**: Google Gemini Pro generates accurate responses based on the matched context.
+
+### **4. Frontend Interaction**
+- A **Streamlit app** provides:
+  - Sidebar for uploading and processing PDFs.
+  - Input box for user questions.
+  - Display of detailed responses generated by the system.
 
 ---
 
-## What I Learned
+## **Steps to Build**
 
-- Deepened understanding of open-source AI models like **Google Gamma** and their variants.
-- Gained hands-on experience in integrating APIs such as **Groq API** for high-speed inferencing.
-- Improved knowledge of vector embedding techniques and their practical applications.
-- Strengthened proficiency in Python-based libraries and frameworks for generative AI workflows.
-- Learned to troubleshoot integration challenges in cloud-based and local environments.
+### **Setup**
+1. **Environment Setup**:
+   - Create a virtual environment:  
+     ```bash
+     conda create -n pdf-chat python=3.10
+     conda activate pdf-chat
+     ```
+   - Install dependencies:  
+     ```bash
+     pip install -r requirements.txt
+     ```
+2. **API Configuration**:
+   - Obtain a **Google Gemini Pro API Key** from [Google MakerSuite](https://makersuite.google.com/app/api-key).
+   - Store the API key in an `.env` file:  
+     ```env
+     GOOGLE_API_KEY=your_google_api_key
+     ```
+
+### **Development**
+1. **Backend Functionality**:
+   - Extract text from PDFs using PyPDF2.
+   - Split text into chunks for embedding.
+   - Convert text chunks into vector embeddings using Google Gemini Pro.
+   - Save embeddings locally using FAISS.
+
+2. **Query Handling**:
+   - Load the vector index for similarity search.
+   - Process user questions and retrieve the most relevant chunks.
+   - Generate detailed responses using Google Gemini Pro's conversational API.
+
+3. **Frontend Integration**:
+   - Build a **Streamlit interface** for PDF uploads and text input.
+   - Display real-time responses in a user-friendly format.
 
 ---
 
-## Future Scope
-
-- Extend the system to support multilingual document analysis.
-- Incorporate more advanced embedding models for improved semantic understanding.
-- Deploy the solution on cloud platforms for broader accessibility and scalability.
-
+## **Usage Instructions**
+1. Run the application:
+   ```bash
+   streamlit run app.py
