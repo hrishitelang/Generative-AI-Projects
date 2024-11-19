@@ -80,7 +80,7 @@ An **Application Tracking System (ATS)** designed to evaluate resumes against jo
 
 ## Usage
 1. Run the application:
-  ```bash
+  ```
    streamlit run app.py
-  
+  ```
 2. Enter the job description and upload a resume to see results.
