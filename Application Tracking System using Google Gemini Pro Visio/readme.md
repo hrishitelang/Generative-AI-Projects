@@ -74,7 +74,7 @@ An **Application Tracking System (ATS)** designed to evaluate resumes against jo
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
-  ```
+   ```
 
 ---
 
@@ -82,5 +82,5 @@ An **Application Tracking System (ATS)** designed to evaluate resumes against jo
 1. Run the application:
   ```bash
    streamlit run app.py
-  ```
+  
 2. Enter the job description and upload a resume to see results.
