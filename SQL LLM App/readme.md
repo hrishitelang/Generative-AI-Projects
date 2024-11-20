@@ -141,7 +141,3 @@ This project demonstrates an **end-to-end application** using **Google Gemini Pr
 - [Streamlit Documentation](https://docs.streamlit.io/)
 - [Google Gemini Pro](https://makersuite.google.com/)
 - [SQLite3 Documentation](https://www.sqlite.org/docs.html)
-
----
-
-With this application, you can easily convert natural language queries into SQL and interact with your databases seamlessly!
